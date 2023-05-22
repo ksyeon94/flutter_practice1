@@ -41,11 +41,24 @@ class MyPage extends StatelessWidget {
         ],
       ),
 
-      body: Center(
-        child: ElevatedButton(onPressed: () {  },
-          child: Text('Show me', style: TextStyle(color: Colors.white),),
-          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
-        )
+      body: Builder(
+        builder: (BuildContext context) {
+          return Center(
+            child: ElevatedButton(child: Text("ElevatedButton"),
+              style: ButtonStyle(
+                  textStyle: MaterialStateProperty.all(
+                      TextStyle(fontSize: 15, color: Colors.white)),
+                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Snackbar'),
+                  ),
+                );
+              },
+            ),
+          );
+        }
       ),
 
       drawer: Drawer(
