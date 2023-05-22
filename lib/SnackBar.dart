@@ -28,11 +28,19 @@ class myhome extends StatelessWidget {
       appBar: AppBar(title: Text('snackBar'), centerTitle: true,
         titleTextStyle: TextStyle(fontSize: 40),
       backgroundColor: Colors.orange,),
-      body: ListView(children: [
-        MySnackbar(),
-         ElevatedButton(onPressed: () {flutterToast();
-           print('clicked');}, child: Text('toast'))
-      ], )
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MySnackbar(),
+           ElevatedButton(
+             onPressed: () {
+               flutterToast('굳굳'); print('clicked');},
+             child: Text('toast'),
+             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.black),
+                                textStyle: MaterialStateProperty.all(TextStyle(fontSize: 20, color: Colors.white))),
+           ),
+        ],
+      )
     );
   }
 }
@@ -59,9 +67,9 @@ class MySnackbar extends StatelessWidget {
   }
 }
 
-void flutterToast(){
+void flutterToast(a){
   Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
+      msg: a,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
